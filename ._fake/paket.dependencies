@@ -1,0 +1,5 @@
+source https://nuget.org/api/v2
+
+nuget FAKE
+nuget FSharp.FakeTargets
+nuget NUnit.Runners 2.6.4
