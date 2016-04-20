@@ -8,7 +8,7 @@ open NuGetHelper
 open RestorePackageHelper
 open FSharpUtils.Fake.Config
 
-DatNET.Targets.Initialize id
+datNET.Targets.Initialize id
 
 Target "RestorePackages" (fun _ ->
   Source.SolutionFile
