@@ -1,4 +1,4 @@
-namespace FSharpUtils.Fake.Config
+namespace datNET.Fake.Config
 
 #r @"./packages/FAKE/tools/FakeLib.dll"
 
@@ -26,10 +26,10 @@ module Nuget =
 
 module Release =
   let Items = !! "**/bin/Release/*"
-  let Version = "0.0.1"
-  let Project = "FSharp.FakeTargets"
+
+  let Project = "datNET.ProjectTemplate"
   let Nuspec = Project + ".nuspec"
   let Authors = [ ]
   let Description = "TODO: Add a description"
-  let OutputPath = Nuget.PackageDirName
   let WorkingDir = "bin"
+  let OutputPath = WorkingDir
