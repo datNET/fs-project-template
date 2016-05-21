@@ -1,6 +1,3 @@
-#r @"./._fake/packages/FAKE/tools/FakeLib.dll"
-#r @"./._fake/packages/FSharp.FakeTargets/tools/FSharpFakeTargets.dll"
-
 #load @"./._fake/loader.fsx"
 
 open Fake
