@@ -4,29 +4,29 @@ open Fake.EnvironmentHelper
 open System.IO
 
 module Common =
-  let RootDir = Directory.GetCurrentDirectory()
+  let rootDir = Directory.GetCurrentDirectory()
 
 module Source =
   open Common
 
-  let SolutionFile = !! (Path.Combine(RootDir, "*.sln"))
+  let solutionFile = !! (Path.Combine(rootDir, "*.sln"))
 
 module Build =
-  let TestAssemblies = !! "tests/**/*.Tests.dll" -- "**/obj/**/*.Tests.dll"
-  let DotNetVersion = "4.5"
-  let MSBuildArtifacts = !! "src/**/bin/**/*.*" ++ "src/**/obj/**/*.*"
+  let testAssemblies = !! "tests/**/*.Tests.dll" -- "**/obj/**/*.Tests.dll"
+  let dotNetVersion = "4.5"
+  let mSBuildArtifacts = !! "src/**/bin/**/*.*" ++ "src/**/obj/**/*.*"
 
 module Nuget =
-  let ApiEnvVar = "NUGET_API_KEY"
-  let ApiKey = environVar ApiEnvVar
-  let PackageDirName = "nupkgs"
+  let apiKey = environVar "NUGET_API_KEY"
+  let packageDirName = "nupkgs"
+  let sources = [ "https://nuget.org/api/v2" ]
 
 module Release =
-  let Items = !! "**/bin/Release/*"
+  let items = !! "**/bin/Release/*"
 
-  let Project = "datNET.ProjectTemplate"
-  let Nuspec = Project + ".nuspec"
-  let Authors = [ ]
-  let Description = "TODO: Add a description"
-  let WorkingDir = "bin"
-  let OutputPath = WorkingDir
+  let project = "datNET.ProjectTemplate"
+  let nuspec = project + ".nuspec"
+  let authors = [ ]
+  let description = "TODO: Add a description"
+  let workingDir = "bin"
+  let outputPath = workingDir

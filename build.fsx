@@ -6,23 +6,23 @@ open datNET.Fake.Config
 
 let private _OverrideConfig (parameters : datNET.Targets.ConfigParams) =
   { parameters with
-      AccessKey = Nuget.ApiKey
-      Authors = Release.Authors
-      Description = Release.Description
-      OutputPath = Release.OutputPath
-      Project = Release.Project
+      AccessKey = Nuget.apiKey
+      Authors = Release.authors
+      Description = Release.description
+      OutputPath = Release.outputPath
+      Project = Release.project
       Publish = true
-      WorkingDir = Release.WorkingDir
+      WorkingDir = Release.workingDir
   }
 
 datNET.Targets.initialize _OverrideConfig
 
 Target "RestorePackages" (fun _ ->
-  Source.SolutionFile
+  Source.solutionFile
   |> Seq.head
   |> RestoreMSSolutionPackages (fun p ->
       { p with
-          Sources = [ "https://nuget.org/api/v2"; ]
+          Sources = Nuget.sources
           OutputPath = "packages"
           Retries = 4 })
 )
