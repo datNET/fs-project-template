@@ -5,17 +5,17 @@ open RestorePackageHelper
 open datNET.Fake.Config
 
 let private _OverrideConfig (parameters : datNET.Targets.ConfigParams) =
-      { parameters with
-          Project = Release.Project
-          Authors = Release.Authors
-          Description = Release.Description
-          WorkingDir = Release.WorkingDir
-          OutputPath = Release.OutputPath
-          Publish = true
-          AccessKey = Nuget.ApiKey
-      }
+  { parameters with
+      AccessKey = Nuget.ApiKey
+      Authors = Release.Authors
+      Description = Release.Description
+      OutputPath = Release.OutputPath
+      Project = Release.Project
+      Publish = true
+      WorkingDir = Release.WorkingDir
+  }
 
-datNET.Targets.Initialize _OverrideConfig
+datNET.Targets.initialize _OverrideConfig
 
 Target "RestorePackages" (fun _ ->
   Source.SolutionFile
@@ -25,13 +25,6 @@ Target "RestorePackages" (fun _ ->
           Sources = [ "https://nuget.org/api/v2"; ]
           OutputPath = "packages"
           Retries = 4 })
-)
-
-Target "Test" (fun _ ->
-  let setParams = (fun p ->
-    { p with DisableShadowCopy = true; ErrorLevel = DontFailBuild; Framework = Build.DotNetVersion; })
-
-  Build.TestAssemblies |> NUnit setParams
 )
 
 "MSBuild"           <== [ "Clean"; "RestorePackages" ]
