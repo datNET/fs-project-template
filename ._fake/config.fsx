@@ -1,7 +1,4 @@
 namespace datNET.Fake.Config
-
-#r @"./packages/FAKE/tools/FakeLib.dll"
-
 open Fake
 open Fake.EnvironmentHelper
 open System.IO
