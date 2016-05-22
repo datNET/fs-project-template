@@ -5,15 +5,15 @@ open RestorePackageHelper
 open datNET.Fake.Config
 
 let private _OverrideConfig (parameters : datNET.Targets.ConfigParams) =
-      { parameters with
-          Project = Release.Project
-          Authors = Release.Authors
-          Description = Release.Description
-          WorkingDir = Release.WorkingDir
-          OutputPath = Release.OutputPath
-          Publish = true
-          AccessKey = Nuget.ApiKey
-      }
+  { parameters with
+      AccessKey = Nuget.ApiKey
+      Authors = Release.Authors
+      Description = Release.Description
+      OutputPath = Release.OutputPath
+      Project = Release.Project
+      Publish = true
+      WorkingDir = Release.WorkingDir
+  }
 
 datNET.Targets.initialize _OverrideConfig
 
