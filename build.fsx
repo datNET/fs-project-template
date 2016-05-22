@@ -23,7 +23,7 @@ Target "RestorePackages" (fun _ ->
   |> RestoreMSSolutionPackages (fun p ->
       { p with
           Sources = Nuget.sources
-          OutputPath = "packages"
+          OutputPath = Nuget.restorePath
           Retries = 4 })
 )
 

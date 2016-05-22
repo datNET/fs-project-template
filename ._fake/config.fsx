@@ -19,6 +19,7 @@ module Build =
 module Nuget =
   let apiKey = environVar "NUGET_API_KEY"
   let packageDirName = "nupkgs"
+  let restorePath = "packages"
   let sources = [ "https://nuget.org/api/v2" ]
 
 module Release =
