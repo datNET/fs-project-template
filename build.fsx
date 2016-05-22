@@ -27,13 +27,6 @@ Target "RestorePackages" (fun _ ->
           Retries = 4 })
 )
 
-Target "Test" (fun _ ->
-  let setParams = (fun p ->
-    { p with DisableShadowCopy = true; ErrorLevel = DontFailBuild; Framework = Build.DotNetVersion; })
-
-  Build.TestAssemblies |> NUnit setParams
-)
-
 "MSBuild"           <== [ "Clean"; "RestorePackages" ]
 "Test"              <== [ "MSBuild" ]
 "Package"           <== [ "Test" ]
